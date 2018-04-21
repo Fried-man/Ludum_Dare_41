@@ -84,7 +84,7 @@ namespace Ludum_Dare_41 {
                 int Month = User.Birthday_Month;
                 int Day = User.Birthday_Day;
                 int Year = User.Age + 2001;
-                for (int i = 1; i < 364; i++) {
+                for (int i = 1; i < 336; i++) {
                     if (Day == 28) {
                         if (Month == 12) {
                             Year++;
@@ -106,11 +106,10 @@ namespace Ludum_Dare_41 {
 
         //Random event section
         static void Day_Advance (Person User, int Month, int Day, int Year) {
-            //Console.Clear();
+            Console.Clear();
             Random rnd = new Random();
             Console.WriteLine("Date: " + Month + "/" + Day + "/" + Year);
-            if (rnd.Next(1, 100001) == 100000) { //350400001 is actual rate
-                Console.WriteLine("Date: " + Month + "/" + Day + "/" + Year);
+            if (rnd.Next(1, 100000) == 10) { //350400001 is actual rate
                 Thread.Sleep(1000);
                 Console.WriteLine("YOU GOT STRUCK BY LIGHTNING!");
                 Console.WriteLine("\nPress any key to continue...");
@@ -118,6 +117,9 @@ namespace Ludum_Dare_41 {
                 Console.Clear();
                 Thread.Sleep(1000);
                 if (rnd.Next(11) == 0) {
+                    Console.WriteLine("Uh oh");
+                    Console.WriteLine("\nPress any key to continue...");
+                    Console.ReadKey();
                     User.Death_Cause = "lightning";
                     Game_Over(User);
                 }else {
