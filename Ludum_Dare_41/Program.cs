@@ -152,13 +152,27 @@ namespace Ludum_Dare_41 {
         static void Actions (string Action) {
             if (Action == "help") {
                 Console.WriteLine("For more information on a specific action, type 'help' command-name");
-                Console.WriteLine("help" + "          " + "Provides info about actions");
-                Console.WriteLine("get" + "           " + "Provides info");
-                Console.WriteLine("kill" + "          " + "Kills someone");
-                Console.WriteLine("change" + "        " + "Changes something");
-                Console.WriteLine("buy" + "           " + "Buys something");
-                Console.WriteLine("go to" + "         " + "Go somewhere");
-                Console.WriteLine("cls" + "           " + "Clears screen");
+                Console.WriteLine(" help" + "                     " + "Provides info about actions");
+                Console.WriteLine(" get" + "                      " + "Provides info");
+                Console.WriteLine(" kill" + "                     " + "Kills someone");
+                Console.WriteLine(" change" + "                   " + "Changes something");
+                Console.WriteLine(" buy" + "                      " + "Buys something");
+                Console.WriteLine(" go to" + "                    " + "Go somewhere");
+                Console.WriteLine(" cls" + "                      " + "Clears screen");
+            }else if (Action == "help help") {
+                Console.WriteLine("Provides info about actions");
+            }else if (Action == "help get") {
+                Console.WriteLine("Acquires info, type 'get' and data-name");
+                Console.WriteLine(" get self" + "                 " + "Provides info about self");
+                Console.WriteLine(" get 'name'" + "               " + "Provides info about certain person");
+            }else if (Action == "help kill") {
+                Console.WriteLine("kill person, type 'k' and person-name");
+                Console.WriteLine(" kill self" + "                " + "Game over?");
+                Console.WriteLine(" kill 'name'" + "              " + "Kill certain person");
+            }else if (Action == "help change") {
+                Console.WriteLine("Changes something, type 'change' and info");
+                Console.WriteLine(" change name 'name'" + "       " + "changes name to 'name'");
+                Console.WriteLine(" change religion 'name'" + "   " + "changes religion to 'name'");
             }else if (Action == "cls") {
                 Console.Clear();
             }else {
@@ -188,6 +202,7 @@ namespace Ludum_Dare_41 {
     class Person {
         //Strategic values
         public int Age = 0;
+        public int Cash = 0;
         public int Happiness = 100;
         public int Sanity = 100;
         //Aesthetic Values
