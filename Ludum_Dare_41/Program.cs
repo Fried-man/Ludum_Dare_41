@@ -16,35 +16,37 @@ namespace Ludum_Dare_41 {
 
         static void Born () {
             Console.Clear();
+            Person User = new Ludum_Dare_41.Person();
             Random rnd = new Random();
-            int Age = 0;
-            String Gender = "Nothing";
             if (rnd.Next(2) == 0) {
-                Gender = "Female";
+                User.Gender = "Female";
             }else {
-                Gender = "Male";
+                User.Gender = "Male";
             }
 
-            Console.WriteLine("You are " + Gender);
-            Console.WriteLine("You are " + Age + " years old.");
+            Console.WriteLine("You are " + User.Gender);
+            Console.WriteLine("You are " + User.Age + " years old.");
+
+            User.Name = Console.ReadLine();
+
             Console.ReadKey();
 
-            Year_Advance(Age);
+            Year_Advance(User);
         }
 
-        static void Year_Advance (int Age) {
-            Age++;
+        static void Year_Advance (Person User) {
+            User.Age++;
 
-            if (Age < 100) {
-                Year_Advance(Age);
+            if (User.Age < 100) {
+                Year_Advance(User);
             }else {
-                Game_Over(Age);
+                Game_Over(User);
             }
         }
 
-        static void Game_Over (int Age) {
+        static void Game_Over (Person User) {
             Console.Clear();
-            Console.WriteLine("You have died at the age of " + Age);
+            Console.WriteLine(User.Name + " has died at the age of " + User.Age);
             Console.WriteLine("Score: ???");
             Console.WriteLine("Restart? (Y/N)");
             Console.WriteLine(" ");
@@ -54,9 +56,19 @@ namespace Ludum_Dare_41 {
             }else if (Input == "N") {
                 System.Environment.Exit(1);
             }else {
-                Game_Over(Age);
+                Game_Over(User);
             }
             Console.ReadKey();
         }
+    }
+
+    class Person {
+        //Strategic values
+        public int Age = 0;
+        //Aesthetic Values
+        public string Name = "Andrew Friedman";
+        public string Gender = "Male";
+        public string Ethnicity = "White";
+        public int Family_Count = 3;
     }
 }
